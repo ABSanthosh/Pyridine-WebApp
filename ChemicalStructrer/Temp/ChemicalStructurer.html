@@ -1,0 +1,231 @@
+<html>
+
+<head>
+    <title>Pyridine | CS</title>
+    <link rel="icon" type="image/ico/png" href="507px-Pyridine-N-oxide-3D-balls.png">   
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Cherry Swash' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+    <link rel="stylesheet" href="https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui.min.css">
+    <link rel="stylesheet" href="https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d_simple_ui.css">
+    <script src="https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery.min.js"></script>
+    <script src="https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/jquery-ui.min.js"></script>
+    <script src="https://www.ncbi.nlm.nih.gov/Structure/icn3d/lib/three.min.js"></script>
+    <script src="https://www.ncbi.nlm.nih.gov/Structure/icn3d/icn3d_simple_ui.min.js"></script>
+
+    <style>
+        .header {
+            font-family: 'Sofia';
+            font-size: 35px;
+            margin-left: 40%;
+            margin-top: 1%;
+        }
+    
+        .iconimage {
+            position: absolute;
+            left: 28%;
+            top: 14px;
+            z-index: -1;
+        }
+    
+        .hr {
+            border: 1px black;
+            width: 55%;
+            margin-top: 1px;
+        }
+    
+        body {
+            background: linear-gradient(to bottom, #66ffff 1%, #0066ff 100%);
+            background-repeat: no-repeat;
+            background-position: 50% 50%;
+            background-size: cover;
+        }
+    
+        .MainTxtFont {
+            font-family: 'Cherry Swash';
+            font-size: 30px;
+        }
+    
+        .MainContainer {
+            border-radius: 20px;
+            margin-top: 5%;
+            position: relative;
+            margin-left: 0%;
+            background: linear-gradient(rgb(247, 209, 209), rgb(157, 224, 247));
+            padding: 15px;
+            padding-left: 25px;
+            min-height: 1858px;
+            max-height: 1858px;
+            height: 100%;
+            width: 80%;
+        }
+    
+        .button {
+            border-radius: 5px;
+            background-color: rgba(105, 102, 102, 0.938);
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 12px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    
+        .inputboxes {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 0px 0;
+            font-size: 20px;
+            font-weight: bold;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    
+        .canvas {
+            margin-top: 6%;
+            margin-left: 4%;
+        }
+    
+        .EmbContain2d {
+            border-radius: 20px;
+            background: linear-gradient(rgb(245, 245, 245), rgb(245, 245, 245));
+            padding: 15px;
+            margin-top: 10%;
+            margin-left: -1%;
+            height: 90%;
+            width: 94%;
+        }
+    
+        .EmbContain3d {
+            border-radius: 20px;
+            background: linear-gradient(rgb(0, 0, 0), rgb(0, 0, 0));
+            padding: 15px;
+            margin-top: 10%;
+            margin-left: -1%;
+            height: 90%;
+            width: 94%;
+        }
+    
+        .icon {
+            width: 150px;
+            height: 170px;
+        }
+    </style>
+    
+    <div class="header">
+        <h1>Pyridine</h1>
+    </div>
+    
+    <div class="iconimage">
+        <img class="icon" src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Pyridine-N-oxide-3D-balls.png">
+    </div>
+    
+    <hr style="border: 1px solid black;" width="55%" />
+
+    <center>
+        <div class="MainContainer">
+            <form method="POST" action="putdata">
+                <table>
+                    <tr>
+                        <td colspan="2">
+                            <div align="left"><label class="MainTxtFont">Enter Chemical Name </label> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="left"><input type="text" class="inputboxes" (placeholder={{cp}}) Name="Compname" </div> </td> </tr> <tr>
+                        <td>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="left" class="MainTxtFont"><label>Molecular Name </label></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="left"><input type="text" readonly class="inputboxes" Name="CompName"
+                                    placeholder={{mn}}> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="left" class="MainTxtFont"><label>Molecular Weight </label></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="left"><input type="text" readonly class="inputboxes" Name="Compweight"
+                                    placeholder={{mw}}> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="left" class="MainTxtFont"><label>Molecular Formula </label></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="left"><input type="text" readonly class="inputboxes" Name="Compform"
+                                    placeholder={{mf}}> </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <br>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <div align="center"> <button class="button">Search</button> </div>
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <tr>
+                        <td align="left">
+                            <div align="center" class="EmbContain3d">
+                                <br>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right">
+                            <div align="center" class="EmbContain2d">
+                                <img src='https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/0000/PNG?record_type=2d&image_size=478x478'
+                                    alt="2D image of the compound">
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+            <div>
+                For Desktop version : <a href="https://github.com/ABSanthosh/Pyridine-ChemicalStructurer">GitHub (Without 3D)</a><br>
+                For Code of this app: <a href="https://github.com/ABSanthosh">GitHub</a><br>
+                Gets Data From      : <a href="https://pubchem.ncbi.nlm.nih.gov/">PubChem</a><br>
+                Contact me: <a href="https://www.instagram.com/_itzz_a_me_mario__/">Instagram</a>
+            </div>
+        </div>
+    </center>
+
+
+</body>
+</head>
+
+</html>
